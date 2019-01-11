@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+  <ion-searchbar  [ngModel]="searchQuery" (ngModelChange)="searchProduct($event)"></ion-searchbar>
+  <div *ngIf="currentStyle !== ''" class="filter-container">
+    <a class="filter-info">Filtering by {{currentStyle}}</a> <button ion-button round (click)="clearFilter()">Clear filters</button>
+  </div>
+  <div *ngIf="searchQuery === '' && currentStyle === ''">
+    <ion-card (click)="filterByStyle(style.value)"  *ngFor="let style of beerStyles">
+      <img class="card-bg" src="{{style.img}}"/>
+      <div class="card-title">{{style.viewValue}}</div>
+    </ion-card>
+  </div>
+
+  <ion-list *ngIf="searchQuery !== '' || currentStyle !== '' ">
+    <ion-item *ngFor="let product of products" (click)="goToDetailsOf(product)">
+      <ion-thumbnail item-start>
+        <img src="{{product.img}}">
+      </ion-thumbnail>
+      <h2>{{product.name}}</h2>
+      <p>{{product.style}} • {{product.price}} €</p>
+      <button ion-button clear item-end>View</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+

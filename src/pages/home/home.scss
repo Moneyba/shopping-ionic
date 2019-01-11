@@ -1,0 +1,33 @@
+page-home {
+  .card-background-page {
+
+    ion-card {
+      position: relative;
+      text-align: center;
+    }
+
+    .card-bg{
+      filter: brightness(50%);
+    }
+
+    .card-title {
+      position: absolute;
+      top: 30%;
+      font-size: 4.0em;
+      width: 100%;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .filter-container{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .filter-info{
+      font-size: 1.5em;
+      text-transform: uppercase;
+    }
+  }
+}

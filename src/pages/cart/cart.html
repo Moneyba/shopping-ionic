@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Cart
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let product of products">
+      <ion-item class="cart-item">
+        <ion-thumbnail item-start>
+          <img src="{{product.img}}">
+        </ion-thumbnail>
+        <div class="item-info">
+          <div class="info-title">{{product.name}}</div>
+          <div>Qty: {{product.quantity}}</div>
+          <div>{{product.price}} €</div>
+        </div>
+
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button ion-button color="primary">
+          Quantity
+            <ion-select [(ngModel)]="product.quantity">
+              <ion-option *ngFor="let quantity of quantities" [value]="quantity">{{quantity}}</ion-option>
+            </ion-select>
+        </button>
+        <button ion-button (click)="removeProduct(product)" icon-only color = "danger">
+          Remove
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <p> Total: {{getTotalCost() + ' €'}} </p>
+
+  <ion-row no-padding class="buy-row">
+    <button ion-button class="buy-button" round>CHECKOUT</button>
+  </ion-row>
+
+
+</ion-content>
